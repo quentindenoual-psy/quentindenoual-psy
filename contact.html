@@ -1,0 +1,32 @@
+
+---
+layout: default
+title: Contact
+---
+{% include hero.html title="Contact" lead="Pour toute question ou prise de rendez-vous." %}
+
+<section class="section">
+  <div class="container grid cols-2">
+    <div class="card">
+      <h2>Me joindre</h2>
+      <p>Le moyen le plus simple : m’écrire un email.</p>
+      <p>
+        <a class="btn" href="mailto:prenom.nom@example.com?subject=Prise%20de%20contact">Écrire un email</a>
+      </p>
+      <p class="muted">Remplacez l’adresse par la vôtre dans le fichier <code>contact.html</code>.</p>
+    </div>
+    <div>
+      <h2>Formulaire (optionnel)</h2>
+      <p>Sur GitHub Pages (site statique), vous pouvez utiliser un service gratuit tiers (ex. Formspree ou EmailJS) pour recevoir les messages.</p>
+      <details class="card">
+        <summary><strong>Exemple Formspree</strong> (compte gratuit)</summary>
+        <form action="https://formspree.io/f/xxxxxxx" method="POST">
+          <label>Nom<br><input name="name" required></label><br><br>
+          <label>Email<br><input type="email" name="email" required></label><br><br>
+          <label>Message<br><textarea name="message" rows="5" required></textarea></label><br><br>
+          <button type="submit">Envoyer</button>
+        </form>
+      </details>
+    </div>
+  </div>
+</section>

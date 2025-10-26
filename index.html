@@ -1,48 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accueil — Quentin Denoual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="navbar container">
+    <a class="navbar-brand" href="/index.html">Quentin Denoual</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+    <div class="nav-spacer"></div>
+    <nav id="primary-nav" class="nav-links" role="navigation">
+      <a href="/about.html">Présentation</a>
+      <a href="/tcc.html">TCC</a>
+      <a href="/terv-vr.html">TERV & VR</a>
+      <a href="/ressources.html">Ressources</a>
+      <a class="cta" href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero section">
+    <div class="container grid cols-2">
+      <div class="media"></div>
+      <div class="stack-m">
+        <p class="kicker">Psychologue — Grenoble</p>
+        <h1>Retrouver sérénité et confiance</h1>
+        <p class="lead">Approches TCC et exposition en réalité virtuelle pour dépasser l’anxiété, les phobies et le stress.</p>
+        <div class="actions">
+          <a class="btn" href="/contact.html">Prendre rendez‑vous</a>
+          <a class="btn ghost" href="/tcc.html">Découvrir les TCC</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
----
-layout: default
-title: Accueil – Quentin Denoual
-permalink: /
----
-{% include hero.html title="TCC & Thérapie d’Exposition en Réalité Virtuelle (TERV)" lead="Accompagnement fondé sur les preuves, au service de vos objectifs." %}
+  <section class="section">
+    <div class="container center stack-l">
+      <div class="stack-s">
+        <h2>Des méthodes fondées sur les preuves</h2>
+        <p class="muted">Une pratique structurée, bienveillante et orientée résultats.</p>
+      </div>
+      <div class="grid auto">
+        <article class="card stack-s">
+          <div class="media"></div>
+          <h3>TCC</h3>
+          <p class="muted">Comprendre et agir sur les pensées et comportements.</p>
+          <div class="meta"><span></span><a href="/tcc.html">En savoir plus</a></div>
+        </article>
+        <article class="card stack-s">
+          <div class="media"></div>
+          <h3>TERV & VR</h3>
+          <p class="muted">Exposition immersive, graduée et sécurisée.</p>
+          <div class="meta"><span></span><a href="/terv-vr.html">Découvrir</a></div>
+        </article>
+        <article class="card stack-s">
+          <div class="media"></div>
+          <h3>Ressources</h3>
+          <p class="muted">Supports de psychoéducation clairs et actionnables.</p>
+          <div class="meta"><span></span><a href="/ressources.html">Voir les PDF</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
+  <section class="section strip-dark">
+    <div class="container grid cols-2">
+      <div class="stack-m">
+        <h2>Un cadre sécurisant pour avancer</h2>
+        <p class="muted" style="color:#cfe6df">Objectifs définis ensemble, exercices concrets, suivi des progrès.</p>
+        <div class="actions"><a class="btn" href="/contact.html">Je prends contact</a></div>
+      </div>
+      <div class="media" style="border-radius:20px; border:1px solid rgba(255,255,255,.12); background:linear-gradient(135deg,#0f4740,#0a2b22)"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid cols-2">
+      <div class="card stack-s">
+        <h3>Questions fréquentes</h3>
+        <p class="muted">Durée des séances, remboursement, déroulé type…</p>
+        <a href="#">Voir la FAQ</a>
+      </div>
+      <div class="card stack-s">
+        <h3>Tarifs & modalités</h3>
+        <p class="muted">Transparence et clarté sur les conditions d’accompagnement.</p>
+        <a href="/contact.html">Me contacter</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
   <div class="container grid cols-2">
-    <div class="card">
-      <h2>Ma philosophie</h2>
-      <p>J'interviens avec des approches validées scientifiquement (TCC, exposition, psychoéducation) dans un cadre clair, bienveillant et collaboratif.</p>
+    <div class="stack-s">
+      <strong>Quentin Denoual — Psychologue</strong>
+      <span>Grenoble</span>
+      <a href="mailto:contact@example.com">contact@example.com</a>
     </div>
-    <div class="card">
-      <h2>Ce que nous pouvons travailler</h2>
-      <p>Gestion de l'anxiété, phobies, TOC, stress, confiance en soi, régulation émotionnelle, et plus — avec ou sans réalité virtuelle selon vos besoins.</p>
+    <div class="stack-s">
+      <span>© 2025</span>
+      <span>Site minimaliste — GitHub Pages</span>
     </div>
   </div>
-</section>
-
-<section class="section">
-  <div class="container grid auto">
-    <article class="card">
-      <h3>TCC</h3>
-      <p class="muted">Comprendre les mécanismes entre pensées, émotions et comportements pour agir différemment.</p>
-      <p><a class="btn" href="{{ '/tcc.html' | relative_url }}">Découvrir les TCC</a></p>
-    </article>
-    <article class="card">
-      <h3>TERV & VR</h3>
-      <p class="muted">Exposition graduée et immersive en réalité virtuelle pour traiter peurs et évitements en sécurité.</p>
-      <p><a class="btn" href="{{ '/terv-vr.html' | relative_url }}">Comprendre la TERV</a></p>
-    </article>
-    <article class="card">
-      <h3>Psychoéducation</h3>
-      <p class="muted">Supports clairs pour apprendre et consolider entre les séances.</p>
-      <p><a class="btn" href="{{ '/ressources.html' | relative_url }}">Voir les ressources</a></p>
-    </article>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container surface" style="padding: var(--gap-3);">
-    <h2>Prendre contact</h2>
-    <p>Une question, une prise de rendez-vous ? Je vous réponds rapidement.</p>
-    <p><a class="btn" href="{{ '/contact.html' | relative_url }}">Page de contact</a></p>
-  </div>
-</section>
+</footer>
+<script src="/assets/js/script.js" defer></script>
+</body>
+</html>

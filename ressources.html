@@ -1,29 +1,57 @@
-
----
-layout: default
-title: Ressources de psychoéducation (PDF)
----
-{% include hero.html title="Ressources de psychoéducation" lead="Chaque vignette affiche automatiquement la première page du PDF." %}
-
-<link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js">
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js" defer></script>
-<script src="{{ '/assets/js/pdf-thumbs.js' | relative_url }}" defer></script>
-
-<section class="section">
-  <div class="container">
-    <p class="muted">Placez vos fichiers dans <code>/assets/pdfs/</code> puis ajoutez un bloc ci-dessous en remplaçant l’URL. Les miniatures se génèrent côté navigateur.</p>
-
-    <div class="grid auto" id="pdf-grid">
-      <!-- Exemple d'item PDF -->
-      <a class="card" href="{{ '/assets/pdfs/exemple.pdf' | relative_url }}" data-pdf="{{ '/assets/pdfs/exemple.pdf' | relative_url }}">
-        <div class="thumb">
-          <canvas aria-hidden="true"></canvas>
-          <div class="fallback" style="display:none">PDF</div>
-        </div>
-        <div class="title">Titre du PDF (exemple)</div>
-        <p class="muted">Court descriptif</p>
-      </a>
-      <!-- Dupliquez le bloc <a> pour chaque PDF -->
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ressources — Quentin Denoual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="navbar container">
+    <a class="navbar-brand" href="/index.html">Quentin Denoual</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="primary-nav" aria-expanded="false">Menu</button>
+    <div class="nav-spacer"></div>
+    <nav id="primary-nav" class="nav-links" role="navigation">
+      <a href="/about.html">Présentation</a>
+      <a href="/tcc.html">TCC</a>
+      <a href="/terv-vr.html">TERV & VR</a>
+      <a href="/ressources.html">Ressources</a>
+      <a class="cta" href="/contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero section">
+    <div class="container stack-m">
+      <p class="kicker">Psychologue — Grenoble</p>
+      <h1>Ressources de psychoéducation (PDF)</h1>
+      <p class="lead">Texte d’introduction court (à écrire plus tard).</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container grid cols-2">
+      <div class="card" style="min-height:180px"></div>
+      <div class="card" style="min-height:180px"></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container grid cols-2">
+    <div class="stack-s">
+      <strong>Quentin Denoual — Psychologue</strong>
+      <span>Grenoble</span>
+      <a href="mailto:contact@example.com">contact@example.com</a>
+    </div>
+    <div class="stack-s">
+      <span>© 2025</span>
+      <span>Site minimaliste — GitHub Pages</span>
     </div>
   </div>
-</section>
+</footer>
+<script src="/assets/js/script.js" defer></script>
+</body>
+</html>

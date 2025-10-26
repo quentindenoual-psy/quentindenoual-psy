@@ -1,0 +1,17 @@
+
+{% if page.wireframe %}
+<div class="wf-banner">
+  <div class="wrap">
+    <span class="wf-badge">Wireframe</span>
+    <div class="wf-links">
+      <strong>Pages :</strong>
+      <a href="{{ '/wireframes/' | relative_url }}">Accueil</a> ·
+      <a href="{{ '/wireframes/about.html' | relative_url }}">Ma présentation</a> ·
+      <a href="{{ '/wireframes/tcc.html' | relative_url }}">TCC</a> ·
+      <a href="{{ '/wireframes/terv-vr.html' | relative_url }}">TERV & VR</a> ·
+      <a href="{{ '/wireframes/ressources.html' | relative_url }}">Ressources</a> ·
+      <a href="{{ '/wireframes/contact.html' | relative_url }}">Contact</a>
+    </div>
+  </div>
+</div>
+{% endif %}

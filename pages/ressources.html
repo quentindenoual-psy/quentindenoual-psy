@@ -1,33 +1,161 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ressources — Quentin Denoual</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ressources — Quentin Denoual Psychologue</title>
   <link rel="stylesheet" href="../style.css">
+  <style>
+    
+    /* --- Ressources style (inspiré de ton exemple) --- */
+    .resources-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }#resourcesList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Chaque carte devient verticale */
+.resource-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #dce1e9;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f4f6fa;
+  transition: box-shadow 0.3s ease;
+}
+
+.resource-item:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.resource-thumb {
+  width: 100%;
+  aspect-ratio: 9 / 16; /* s'adapte à la largeur de l'écran */
+  overflow: hidden;
+}
+
+.resource-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* remplissage complet du cadre */
+  object-position: top; /* ancrage en haut (et non centré) */
+}
+
+
+.resource-content {
+  padding: 1.25rem;
+  max-height: 450px; /* Limite la hauteur visible */
+  overflow: hidden;
+  position: relative;
+}
+
+.resource-content.expanded {
+  max-height: none; /* Affiche tout le contenu quand "lire la suite" est cliqué */
+}
+
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .resource-item {
+        flex-direction: column;
+      }
+      .resource-thumb {
+        flex: none;
+        height: 100px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <a href="../index.html">← Retour</a>
-    <h2>Ressources & Documents</h2>
-    <p>Upload des PDF (ex : fiches pratiques). La première page s'affiche comme vignette après upload.</p>
+  <header>
+    <a href="../index.html" class="back-link">← Retour à l'accueil</a>
+  </header>
 
-    <section style="margin-top:1rem;background:#fff;padding:1rem;border-radius:10px">
-      <label for="pdfInput">Importer un PDF :</label>
-      <input id="pdfInput" type="file" accept="application/pdf">
-      <div id="thumbs" style="margin-top:1rem"></div>
-      <small>Attention : prototype client-side — pour production utiliser conversion serveur et stockage sécurisé (S3).</small>
-    </section>
+  <section class="resources-container">
+    <h1>Ressources et documents : Les récap'</h1>
+    <p>Découvrez ici quelques fiches et de documents récapitulatifs conçus pour accompagner votre compréhension des TCC.</p>
 
-    <section style="margin-top:1.2rem;">
-      <h3>Galerie</h3>
-      <div id="gallery" class="resource-grid">
-        <!-- Exemple statique -->
-      </div>
-    </section>
-  </div>
+    <div id="resourcesList"></div>
+  </section>
 
-  <!-- PDF.js & preview script -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-  <script src="../scripts/pdf-preview.js"></script>
+  <script>
+    // Liste manuelle pour l'instant (peut être générée automatiquement via Node.js)
+    const pdfResources = [
+      {
+        file: '../assets/pdfs/psychoéducation/Attaque de Panique.pdf',
+        title: 'Attaque de Panique',
+        desc: 'Une fiche simple pour s’initier à la respiration abdominale et à la relaxation musculaire progressive, adaptée au quotidien.',
+        img: '../assets/images/psychoéducation/Attaque de Panique-cover.png'
+      },
+      {
+        file: '../assets/pdfs/psychoéducation/Ancrage.pdf',
+        title: 'Ancrage : La technique du 5-4-3-2-1',
+        desc: 'Une fiche simple pour s’initier à la respiration abdominale et à la relaxation musculaire progressive, adaptée au quotidien.',
+        img: '../assets/images/psychoéducation/Ancrage-cover.png'
+      },
+      {
+        file: '../assets/pdfs/psychoéducation/Gestion de la Colère.pdf',
+        title: 'Introduction à la Gestion de la colère',
+        desc: 'Une fiche simple pour s’initier à la respiration abdominale et à la relaxation musculaire progressive, adaptée au quotidien.',
+        img: '../assets/images/psychoéducation/Colère-cover.png'
+      },
+      {
+        file: '../assets/pdfs/psychoéducation/Condtionnement.pdf',
+        title: 'Introduction à la notion de conditionnement',
+        desc: 'Une fiche simple pour s’initier à la respiration abdominale et à la relaxation musculaire progressive, adaptée au quotidien.',
+        img: '../assets/images/psychoéducation/Conditionnement-cover.png'
+      },
+      {
+        file: '../assets/pdfs/psychoéducation/Jacobson.pdf',
+        title: 'Introduction à la notion de conditionnement',
+        desc: 'Une fiche simple pour s’initier à la respiration abdominale et à la relaxation musculaire progressive, adaptée au quotidien.',
+        img: '../assets/images/psychoéducation/Jacobson-cover.png'
+      },
+      {
+        file: '../assets/pdfs/psychoéducation/Restructuration Cognitive.pdf',
+        title: 'Introduction à la notion de conditionnement',
+        desc: 'Une fiche simple pour s’initier à la respiration abdominale et à la relaxation musculaire progressive, adaptée au quotidien.',
+        img: '../assets/images/psychoéducation/Restructuration Cognitive-cover.png'
+      },
+      {
+        file: '../assets/pdfs/psychoéducation/Hygiène de vie.pdf',
+        title: 'Introduction à la notion de conditionnement',
+        desc: 'Une fiche simple pour s’initier à la respiration abdominale et à la relaxation musculaire progressive, adaptée au quotidien.',
+        img: '../assets/images/psychoéducation/Hygiène de vie-cover.png'
+      }
+    ];
+
+    const container = document.getElementById('resourcesList');
+
+    pdfResources.forEach(r => {
+      const item = document.createElement('div');
+      item.className = 'resource-item';
+
+      const thumb = document.createElement('div');
+      thumb.className = 'resource-thumb';
+      const img = document.createElement('img');
+      img.src = r.img;
+      img.alt = r.title;
+      thumb.appendChild(img);
+
+      const content = document.createElement('div');
+      content.className = 'resource-content';
+      content.innerHTML = `
+        <h3>${r.title}</h3>
+        <p>${r.desc}</p>
+        <a href="${r.file}" target="_blank" download>Télécharger le PDF</a>
+      `;
+
+      item.appendChild(thumb);
+      item.appendChild(content);
+      container.appendChild(item);
+    });
+  </script>
 </body>
 </html>

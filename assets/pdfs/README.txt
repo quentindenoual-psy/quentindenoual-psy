@@ -1,1 +1,0 @@
-Placez ici vos PDFs. Exemple référencé dans ressources.html : assets/pdfs/exemple.pdf

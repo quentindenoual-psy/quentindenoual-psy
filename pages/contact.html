@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact / RDV — Quentin Denoual</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html">← Retour</a>
+    <h2>Contact & Prise de rendez-vous</h2>
+    <form id="contactForm" style="max-width:700px;background:#fff;padding:1rem;border-radius:10px">
+      <label>Nom complet<input type="text" name="name" required></label><br><br>
+      <label>Email<input type="email" name="email" required></label><br><br>
+      <label>Téléphone<input type="tel" name="phone"></label><br><br>
+      <label>Motif (anxiété, phobie, TERV...)<input type="text" name="subject"></label><br><br>
+      <label>Message<textarea name="message" rows="4"></textarea></label><br><br>
+      <button type="submit" class="btn primary">Envoyer la demande</button>
+    </form>
+    <p style="margin-top:.8rem;color:var(--muted)">Toutes les demandes sont traitées sous 48h. Ce formulaire n’est qu’un prototype — pour production intégrer Captcha & consentement RGPD.</p>
+  </div>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Merci — la demande a été simulée (prototype). Intègre une API backend pour envoyer email & stocker les demandes.');
+    });
+  </script>
+</body>
+</html>

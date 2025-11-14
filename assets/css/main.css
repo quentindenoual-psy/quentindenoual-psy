@@ -1,9 +1,0 @@
-
-:root { --maxw: 72ch; --pad: 24px; --border: #e6e6ef; }
-.container { max-width: var(--maxw); margin-inline:auto; padding-inline: var(--pad); }
-.section { padding-block: 48px; }
-.grid { display:grid; grid-template-columns:1fr; gap: 16px; }
-@media (min-width: 768px){ .grid.cols-2{ grid-template-columns: repeat(2,1fr);} }
-@media (min-width: 1024px){ .grid.cols-3{ grid-template-columns: repeat(3,1fr);} }
-.grid.auto { grid-template-columns: repeat(auto-fit, minmax(min(280px,100%), 1fr)); }
-.hero { padding-block: 72px; }

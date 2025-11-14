@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ressources — Quentin Denoual</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html">← Retour</a>
+    <h2>Ressources & Documents</h2>
+    <p>Upload des PDF (ex : fiches pratiques). La première page s'affiche comme vignette après upload.</p>
+
+    <section style="margin-top:1rem;background:#fff;padding:1rem;border-radius:10px">
+      <label for="pdfInput">Importer un PDF :</label>
+      <input id="pdfInput" type="file" accept="application/pdf">
+      <div id="thumbs" style="margin-top:1rem"></div>
+      <small>Attention : prototype client-side — pour production utiliser conversion serveur et stockage sécurisé (S3).</small>
+    </section>
+
+    <section style="margin-top:1.2rem;">
+      <h3>Galerie</h3>
+      <div id="gallery" class="resource-grid">
+        <!-- Exemple statique -->
+      </div>
+    </section>
+  </div>
+
+  <!-- PDF.js & preview script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script src="../scripts/pdf-preview.js"></script>
+</body>
+</html>

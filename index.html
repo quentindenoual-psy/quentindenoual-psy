@@ -25,7 +25,7 @@
     <!-- Navigation avec boutons -->
     <nav class="main-nav">
       <a href="index.html" class="nav-btn">Accueil</a>
-      <a href="pages/terv.html" class="nav-btn">Thérapie</a>
+      <!--<a href="pages/terv.html" class="nav-btn">Thérapie</a>-->
       <a href="pages/ressources.html" class="nav-btn">Ressources</a>
       <a href="pages/contact.html" class="nav-btn">Prendre RDV</a>
     </nav>
@@ -50,49 +50,115 @@
     </div>
 </section>
 
+
+<!-- CARDS DE LA SECTION-->
   <main>
 <section class="nav-cards">
-  <div class="nav-card">
-    <a href="pages/tcc.html">
-      <img src="\assets\images\Acceuil\TCC 1.png" alt="TCC">
-      <div class="overlay">
-        <h3>Thérapies</h3>
-        <p>Les Thérapies Cognitivo-Comportementales(TCC) expliquées simplement. Pour qui ou quoi ?</p>
-      </div>
-    </a>
+
+  <div class="nav-card" onclick="document.querySelector('#section-therapies').scrollIntoView({ behavior: 'smooth' })">
+    <img src="assets/images/Acceuil/TCC 1.png" alt="TCC">
+    <div class="overlay">
+      <h3>Thérapie</h3>
+      <p>Les approches TCC expliquées simplement.</p>
+    </div>
   </div>
 
-  <div class="nav-card">
-    <a href="pages/terv.html">
-      <img src="\assets\images\Acceuil\Photo VR IA.png" alt="TERV">
-      <div class="overlay">
-        <h3>TERV</h3>
-        <p> Thérapie par Exposition en Réalité Virtuelle</p>
-      </div>
-     </a>
+  <div class="nav-card" onclick="document.querySelector('#section-terv').scrollIntoView({ behavior: 'smooth' })">
+    <img src="assets/images/Acceuil/Photo VR IA.png" alt="TERV">
+    <div class="overlay">
+      <h3>TERV</h3>
+      <p>La thérapie en réalité virtuelle</p>
+    </div>
   </div>
 
-  <div class="nav-card">
-    <a href="pages/ressources.html">
-      <img src="assets/images/Acceuil/Psychoéducation.png" alt="Ressources">
-      <div class="overlay">
-        <h3>Les récap'</h3>
-        <p>Guides, PDF et outils à télécharger</p>
-      </div>
-    </a>
+  <div class="nav-card" onclick="document.querySelector('#section-ressources').scrollIntoView({ behavior: 'smooth' })">
+    <img src="assets/images/Acceuil/Psychoéducation.png" alt="Ressources">
+    <div class="overlay">
+      <h3>Ressources</h3>
+      <p>Guides & outils</p>
+    </div>
   </div>
 
-  <div class="nav-card" onclick="location.href='#contact'">
-    <a href="pages/contact.html">
-       <img src="\assets\images\Acceuil\Mail.jpg" alt="Contact">
-       <div class="overlay">
-       <h3>Contact</h3>
-       <p>Me joindre ou prendre rendez-vous</p>
-       </div>
-    </a>
+  <div class="nav-card" onclick="document.querySelector('#section-contact').scrollIntoView({ behavior: 'smooth' })">
+    <img src="assets/images/Acceuil/Mail.jpg" alt="Contact">
+    <div class="overlay">
+      <h3>Contact</h3>
+      <p>Me joindre / RDV</p>
+    </div>
   </div>
+
 </section>
-<section class="section-presentation">
+
+<!-- CONTENU SECTIONS-->
+<section id="section-therapies" class="content-section">
+  <h2>Qu’est-ce que la TCC ?</h2>
+  <p> La Thérapie Cognitive et Comportementale (TCC) est une approche psychothérapeutique moderne, brève et scientifiquement reconnue. Elle aide à comprendre comment nos pensées, nos émotions et nos comportements interagissent, et comment certains automatismes peuvent entretenir la souffrance.
+La TCC vise à identifier ces mécanismes, à modifier les pensées inutiles ou limitantes, et à adopter des comportements plus adaptés. Elle s’appuie sur des outils concrets, des exercices pratiques et une collaboration active entre le thérapeute et la personne accompagnée.
+
+Efficace pour l’anxiété, la dépression, les phobies, les TOC, le stress ou le manque de confiance, la TCC permet d’obtenir des changements durables et donne les moyens de devenir progressivement acteur de son mieux-être.</p>
+<p> Quelques indications de la TCC </p> 
+
+<ul style="list-style-image: url('puce.png');">
+<li> Troubles anxieux (anxiété généralisée, crises d’angoisse ou attaque de panique, inquiétudes excessives), Phobies spécifiques (avion, hauteur, animaux, conduite, sang, espaces clos…) Phobie sociale et anxiété de performance
+<li>Troubles obsessionnels et compulsifs (TOC)</li>
+<li> Symptômes dépressif</li>
+<li> Troubles du sommeil (insomnies, ruminations nocturnes)</li>
+<li> Troubles alimentaires (hyperphagie, restrictions, préoccupations alimentaires)</li>
+<li> Addictions</li>
+<li> Problèmes d’estime de soi, de confiance en soi ou d'affirmation de soi</li>
+<li> Difficultés émotionnelles (hypersensibilité, irritabilité, colère)</li>
+
+
+ </ul>
+
+
+</section>
+
+<section id="section-terv" class="content-section">
+  <h2>Les TERV : la thérapie d’exposition en réalité virtuelle</h2>
+
+<p>Les Thérapies par Exposition à la Réalité Virtuelle (TERV) permettent de travailler les phobies et troubles anxieux grâce à des environnements immersifs réalistes.
+Grâce à un casque de réalité virtuelle, la personne peut s’exposer de façon progressive, sécurisée et contrôlée à la situation qui lui fait peur : avion, conduite, hauteur, prise de parole, espaces clos, transports…
+
+Cette méthode, scientifiquement validée, offre un cadre souple et efficace pour réduire l’anxiété, apprendre à gérer ses réactions et reprendre confiance.
+La thérapie se déroule avec un accompagnement personnalisé, des exercices en immersion et un travail progressif adapté au rythme de chacun.</p>
+
+<h2>Comment se déroule une séance de TERV ?</h2>
+Une séance de TERV inclut généralement :
+<ol>
+<li>Un temps d’explication et de préparation : Compréhension du trouble, des objectifs et du plan d’exposition.</li>
+<li>L’installation du casque VR : Le thérapeute ajuste le matériel et décrit la séance.</li>
+<li>L’exposition immersive avec des scénarios progressifs avec moi</li>
+<li>Débriefing, ajustements, objectifs pour la séance suivante, etc.</li>
+</ol>
+La progression se fera toujours à votre rythme et dans un cadre sécurisé.
+
+
+</section>
+
+<section id="section-ressources" class="content-section">
+  <h2>Ressources</h2>
+  <p>Vous trouverez ici des documents et des synthèses conçus pour faciliter la compréhension et l’application des concepts psychologiques vus en consultation.
+Ces ressources ne remplacent en aucun cas nos consultations : il s’agit de récapitulatifs pratiques, pensés pour compléter nos échanges et vous offrir des repères simples, plutôt que des cours complets de psychoéducation.</p>
+
+    <a href="pages/ressources.html" style="text-decoration: none; color: #007BFF; font-weight: bold;">
+        Accéder aux ressources
+    </a>
+</section>
+<!--
+<section id="section-contact" class="content-section">
+  <h2>Contact</h2>
+  <p>Contenu…</p>
+     <a href="pages/contact.html" style="text-decoration: none; color: #007BFF; font-weight: bold;">
+        Prendre RDV
+    </a>
+</section>
+-->
+
+<!-- PRESENTATION MOI / A PROPOS -->
+<section id="section-A-propos" class="presentation-section">
+
+  <!-- CONTAINER FLEX -->
   <div class="presentation-container">
 
     <!-- PHOTO -->
@@ -105,19 +171,30 @@
       
       <h2 class="presentation-title">Quentin Denoual – Psychologue Clinicien</h2>
       <p>
-        Psychologue diplômé, installé à Grenoble, j’accompagne les personnes qui souhaitent retrouver un équilibre émotionnel et comportemental dans leur vie. 
-        Mon approche repose sur la collaboration : chaque séance est un espace où nous travaillons ensemble pour comprendre vos difficultés et construire des solutions adaptées à vos objectifs.
-        Mon rôle est de vous offrir un cadre sécurisant, bienveillant et structuré, où vous pouvez avancer à votre rythme. J’accorde une importance particulière à la clarté, à la praticité des outils et à l’implication active du patient, 
-        car je crois que le changement durable se construit pas à pas, avec des stratégies concrètes. Chaque accompagnement est personnalisé, car votre histoire et vos besoins sont uniques.
-        Je propose également la Thérapie d’Exposition en Réalité Virtuelle (TERV), un outil innovant permettant un travail thérapeutique progressif et sécurisé.
+        Psychologue diplômé, installé à Grenoble, j’accompagne les personnes qui souhaitent retrouver un équilibre émotionnel
+        et comportemental dans leur vie. Mon approche repose sur la collaboration : chaque séance est un espace où nous
+        travaillons ensemble pour comprendre vos difficultés et construire des solutions adaptées à vos objectifs.
       </p>
 
+      <p>
+        Mon rôle est de vous offrir un cadre sécurisant, bienveillant et structuré, où vous pouvez avancer à votre rythme.
+        J’accorde une importance particulière à la clarté, à la praticité des outils et à l’implication active du patient,
+        car je crois que le changement durable se construit pas à pas, avec des stratégies concrètes.
+      </p>
+
+      <p>
+        Je propose également la Thérapie d’Exposition en Réalité Virtuelle (TERV), un outil innovant permettant un travail
+        thérapeutique progressif et sécurisé.
+      </p>
     </div>
 
   </div>
 </section>
 </main>
 
+
+
+<!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-grid footer-4cols">
       <div>

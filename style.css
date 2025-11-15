@@ -5,7 +5,9 @@
   --gris-clair: #E6E8E3;
   --blanc-casse: #FAFAF7;
 }
-
+html {
+    scroll-behavior: smooth;
+}
 .site-header {
   background-color: #F0F1ED; /* gris très clair */
   padding: 20px 40px;
@@ -365,90 +367,92 @@ footer {
 .nav-card:hover .overlay {
   background: linear-gradient(to top, rgba(167,196,160,0.9), rgba(31,61,54,0.5));
 }
-
-/* --- SECTION PRÉSENTATION --- */
-.section-presentation {
-    padding: 4rem 8%;
-    background: var(--gris-clair);
-}
-
-.presentation-container {
-    display: flex;
-    gap: 3rem;
-    align-items: flex-start;
-    max-width: 1300px;
-    margin: auto;
-}
-
-/* PHOTO */
-.presentation-photo {
-    flex: 0 0 300px; /* même ratio que ton exemple */
-}
-
-.presentation-photo img {
+/** Sections **/
+/* SECTIONS SOUS LES CARDS → verticales */
+.content-section {
     width: 100%;
-    height: auto;
-    border-radius: 6px;
-    object-fit: cover;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
-}
-
-/* TEXTE */
-.presentation-text {
-    flex: 1;
-    color: #222;
-    line-height: 1.7;
-    font-size: 1.05rem;
-}
-
-.presentation-title {
-    font-size: 1.9rem;
-    font-weight: 700;
-    margin-bottom: 0.7rem;
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 3rem 2rem;
+    background: #FAFAF7;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     font-family: 'Lexend', sans-serif;
 }
 
-/* Sous-infos en ligne */
-.presentation-subinfos {
-    display: flex;
-    gap: 2rem;
-    font-weight: 600;
+section p {/* met le texte en justifié*/
+  text-align: justify;
+  hyphens: auto;
+} 
+
+/* Titre section */
+.content-section h2 {
     margin-bottom: 1.5rem;
-    flex-wrap: wrap;
+    font-size: 2.2rem;
+    color: #1F3D36; /* ton vert bouteille */
 }
 
-.presentation-subinfos .rpps {
-    color: var(--vert-bouteille);
+/* Paragraphe */
+.content-section p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #222;
 }
 
-/* Paragraphes */
-.presentation-text p {
-    margin-bottom: 1.1rem;
-    text-align: justify;
+/* ---- SECTION PRÉSENTATION ---- */
+.presentation-section {
+    width: 100%;
+    padding: 4rem 2rem;
+    background: #FAFAF7;
+    display: flex;
+    justify-content: center;
 }
 
-/* --- RESPONSIVE --- */
+.presentation-container {
+    max-width: 1200px;
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+/* Photo */
+.presentation-photo img {
+    width: 340px;
+    height: auto;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+    background: white;
+}
+
+/* Texte */
+.presentation-text {
+    flex: 1;
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #222;
+}
+
+.presentation-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #1F3D36;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Responsive --- */
 @media (max-width: 900px) {
     .presentation-container {
         flex-direction: column;
         text-align: center;
-        align-items: center;
     }
-    .presentation-photo {
-        width: 60%;
-        max-width: 320px;
-    }
-    .presentation-text {
-        text-align: left;
+
+    .presentation-photo img {
+        width: 280px;
+        margin: 0 auto;
     }
 }
-
-@media (max-width: 600px) {
-    .presentation-photo {
-        width: 80%;
-    }
-}
-
 
 /* FOOTER GLOBAL */
 .site-footer {

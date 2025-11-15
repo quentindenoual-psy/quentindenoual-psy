@@ -5,7 +5,15 @@
   --gris-clair: #E6E8E3;
   --blanc-casse: #FAFAF7;
 }
-
+body {
+  font-family: 'Lexend', sans-serif;
+}
+.hero-title,
+.hero-subtitle,
+.hero-content,
+.hero-button {
+  font-family: 'Lexend', sans-serif;
+}
 /* --- HERO ACCUEIL --- */
 
 .hero-advanced {
@@ -307,4 +315,87 @@ footer {
 
 .nav-card:hover .overlay {
   background: linear-gradient(to top, rgba(167,196,160,0.9), rgba(31,61,54,0.5));
+}
+
+/* --- SECTION PRÉSENTATION --- */
+.section-presentation {
+    padding: 4rem 8%;
+    background: var(--gris-clair);
+}
+
+.presentation-container {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* PHOTO */
+.presentation-photo {
+    flex: 0 0 300px; /* même ratio que ton exemple */
+}
+
+.presentation-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+/* TEXTE */
+.presentation-text {
+    flex: 1;
+    color: #222;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.presentation-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    font-family: 'Lexend', sans-serif;
+}
+
+/* Sous-infos en ligne */
+.presentation-subinfos {
+    display: flex;
+    gap: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.presentation-subinfos .rpps {
+    color: var(--vert-bouteille);
+}
+
+/* Paragraphes */
+.presentation-text p {
+    margin-bottom: 1.1rem;
+    text-align: justify;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .presentation-container {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .presentation-photo {
+        width: 60%;
+        max-width: 320px;
+    }
+    .presentation-text {
+        text-align: left;
+    }
+}
+
+@media (max-width: 600px) {
+    .presentation-photo {
+        width: 80%;
+    }
 }

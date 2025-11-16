@@ -1,30 +1,264 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Contact / RDV — Quentin Denoual</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Contact — Quentin Denoual Psychologue</title>
+
+  <!-- Police Lexend -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- STYLE CSS GLOBAL (remonter d'un dossier) -->
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* -------------------------
+        PAGE CONTACT : STYLES
+    -------------------------- */
+
+    body {
+      font-family: 'Lexend', sans-serif;
+      background-color: #f7f9fb;
+      color: #1c1f21;
+    }
+
+    /* Pour créer un espace sous le header */
+    .contact-page-wrapper {
+      max-width: 850px;
+      margin: 7rem auto 3rem;
+      padding: 1rem 1.5rem;
+    }
+
+    .contact-title {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: #0f3d2e; /* Vert SAPIN */
+    }
+
+    .contact-subtitle {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #3c4a40;
+    }
+
+    /* Formulaire */
+    .contact-form {
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #e0e6e2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.85rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccd5cf;
+      background: #fefefe;
+      transition: border-color 0.2s ease;
+      font-family: 'Lexend', sans-serif;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #0f3d2e;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .submit-btn {
+      background-color: #0f3d2e;
+      color: white;
+      padding: 0.9rem 1.8rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s;
+      font-family: 'Lexend', sans-serif;
+      font-weight: 600;
+    }
+
+    .submit-btn:hover {
+      background-color: #145742;
+    }
+
+    /* Message de confirmation */
+    #formSuccess {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: #e4f7ec;
+      color: #145a34;
+      border-left: 4px solid #0f8a3c;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+  </style>
 </head>
+
+
 <body>
-  <div class="container">
-    <a href="../index.html">← Retour</a>
-    <h2>Contact & Prise de rendez-vous</h2>
-    <form id="contactForm" style="max-width:700px;background:#fff;padding:1rem;border-radius:10px">
-      <label>Nom complet<input type="text" name="name" required></label><br><br>
-      <label>Email<input type="email" name="email" required></label><br><br>
-      <label>Téléphone<input type="tel" name="phone"></label><br><br>
-      <label>Motif (anxiété, phobie, TERV...)<input type="text" name="subject"></label><br><br>
-      <label>Message<textarea name="message" rows="4"></textarea></label><br><br>
-      <button type="submit" class="btn primary">Envoyer la demande</button>
-    </form>
-    <p style="margin-top:.8rem;color:var(--muted)">Toutes les demandes sont traitées sous 48h. Ce formulaire n’est qu’un prototype — pour production intégrer Captcha & consentement RGPD.</p>
+
+  <!-- HEADER GLOBAL -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-text">
+        <h1>
+          Quentin Denoual
+          <span class="sub"><i>Psychologue clinicien</i></span>
+        </h1>
+      </div>
+
+      <nav class="main-nav">
+        <a href="../index.html" class="nav-btn">Accueil</a>
+        <a href="ressources.html" class="nav-btn">Ressources</a>
+        <a href="contact.html" class="nav-btn active">Me contacter</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- PAGE CONTACT -->
+  <div class="contact-page-wrapper">
+
+    <h1 class="contact-title">Me contacter</h1>
+    <p class="contact-subtitle">
+      Vous pouvez utiliser ce formulaire pour prendre rendez-vous, poser une question ou demander des informations supplémentaires.
+      Je vous répondrai dès que possible.
+    </p>
+
+    <form class="contact-form">
+
+       <div class="form-group">
+
+    <input id="name" name="name" type="text" placeholder="Nom et prénom" required>
   </div>
 
+  <div class="form-group">
+    <input id="email" name="email" type="email" placeholder="Adresse email" required>
+  </div>
+
+  <div class="form-group">
+    <input id="subject" name="subject" type="text" placeholder="Objet de votre message" required>
+  </div>
+
+  <div class="form-group">
+    <textarea id="message" name="message" placeholder="Écrivez votre message ici..." required></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">Envoyer</button>
+
+  <div id="formSuccess">
+    Votre message a bien été envoyé. Je reviens vers vous très rapidement.
+  </div>
+
+    </form>
+  </div>
+
+  <!-- LOCALISATION + CARTE Dands page contact-->
+<section class="map-section">
+  <h2 class="map-title">Accéder au cabinet</h2>
+
+  <div class="map-grid">
+
+    <!-- DESCRIPTION -->
+    <div class="map-info">
+      <p>📍 <strong>Adresse :</strong> RUE, 38000 VILLE</p>
+
+      <p>🚋 Accessible par les lignes de tram <strong>?</strong> et <strong>?</strong></p>
+
+     <p>🅿️ Parking Hoche à proximité — 3 Rue François Raoult</p>
+
+     <p>📅 <a href="LIEN_DOCTOLIB">Prendre rendez-vous en ligne</a></p>
+
+      <p>📞 06 22 18 06 50</p>
+
+      <p>📧 denoualquentin.pro@gmail.com</p>
+    </div>
+
+    <!-- GOOGLE MAPS -->
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2771.912700390689!2d5.7245!3d45.1884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478af47cfa0e0001%3A0xafbb6c2ad1ed9c22!2s3%20Rue%20Saint-Joseph%2C%2038000%20Grenoble!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+        width="100%"
+        height="100%"
+        style="border:0; border-radius: 16px;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+  <!-- JAVASCRIPT -->
   <script>
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Merci — la demande a été simulée (prototype). Intègre une API backend pour envoyer email & stocker les demandes.');
+    document.querySelector('.contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();  // Empêche l'envoi réel (à remplacer plus tard)
+      document.getElementById('formSuccess').style.display = 'block';
+      this.reset();
     });
   </script>
+
+<footer class="site-footer">
+  <div class="container footer-grid footer-4cols">
+
+    <div>
+      <h4>Adresse</h4>
+      <p>X Rue XXX</p>
+      <p>38XXX, Grenoble</p>
+    </div>
+
+    <div>
+      <h4>Tarifs</h4>
+      <p>Consultation Adultes (50 min) : 60 €</p>
+      <p>Consultation Étudiants (50 min) : 50 €</p>
+
+      <h4>Moyens de Paiement</h4>
+      <p>Carte bancaire ou espèces.</p>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>denoualquentin.pro@gmail.com</p>
+      <p>Tél : +33 6 22 18 06 50</p>
+      <a href="contact.html" class="cta-button">Prendre rendez-vous</a>
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    <h4>Informations légales</h4>
+    <p>Numéro RPPS : <strong>XXXXXXXXXXXX</strong>, SIRET : <strong>XXX XXX XXX 000YY</strong></p>
+    <i>© 2025 Quentin Denoual — Tous droits réservés</i>
+  </div>
+</footer>
+
+
 </body>
 </html>

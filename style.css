@@ -460,6 +460,184 @@ section p {/* met le texte en justifié*/
 }
 
 
+/*Page Contact*/
+/* --- SECTION CONTACT --- */
+.contact-section {
+  padding: 4rem 1rem;
+  background: #FAFAF7;
+  font-family: 'Lexend', sans-serif;
+}
+
+.contact-container {
+  max-width: 650px;
+  margin: auto;
+}
+
+.contact-section h1 {
+  font-size: 2.2rem;
+  color: #0E3D32;
+  margin-bottom: 1rem;
+}
+
+.contact-intro {
+  color: #26332F;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+/* --- FORMULAIRE CONTACT --- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 1.2rem 1rem 0.6rem;
+  font-size: 1rem;
+  border: 1.5px solid #C8D8D2;
+  border-radius: 8px;
+  background: #FFFFFF;
+  font-family: 'Lexend', sans-serif;
+  color: #26332F;
+  transition: border-color 0.2s ease;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* LABEL flottant */
+.form-group label {
+  position: absolute;
+  left: 1rem;
+  top: 1.2rem;
+  font-size: 1rem;
+  color: #6B7A75;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+input:focus + label,
+textarea:focus + label,
+select:focus + .label-select,
+input:not(:placeholder-shown) + label,
+textarea:not(:placeholder-shown) + label {
+  top: -0.55rem;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  color: #0E3D32;
+  background: #FAFAF7;
+  padding: 0 0.3rem;
+}
+
+/* FOCUS */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #2BA98D;
+  outline: none;
+}
+
+/* BOUTON */
+.contact-submit {
+  padding: 1rem 2rem;
+  background: #0E3D32;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.contact-submit:hover {
+  background: #145548;
+}
+
+.contact-security {
+  font-size: 0.85rem;
+  color: #5C6A66;
+  margin-top: 0.8rem;
+}
+
+/* MESSAGE SUCCES */
+.form-success {
+  display: none;
+  margin-top: 2rem;
+  padding: 1.2rem;
+  background: #DDEEE8;
+  border-left: 4px solid #2BA98D;
+  color: #0E3D32;
+  border-radius: 6px;
+}
+/* FIN FORMULAIRE CONTACT*/
+
+/** CARTE LOCALISATION CABINET*/
+/* SECTION MAP */
+.map-section {
+  background-color: #E9EFEA;
+  padding: 5rem 1rem;
+  margin-top: 3rem;
+}
+
+.map-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #26453E;
+}
+
+.map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* TEXTE */
+.map-info {
+  background: #F8F8F4;
+  padding: 2.5rem;
+  border-radius: 22px;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #37554F;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* MAP */
+.map-container {
+  width: 100%;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .map-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-container {
+    height: 350px;
+  }
+}
+
+
 
 /* FOOTER GLOBAL */
 .site-footer {
@@ -510,3 +688,5 @@ section p {/* met le texte en justifié*/
   border-top: 1px solid #ddd;
   padding-top: 15px;
 }
+
+

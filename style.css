@@ -4,7 +4,10 @@
   --beige: #F5EFE7;
   --gris-clair: #E6E8E3;
   --blanc-casse: #FAFAF7;
+  --header-height: 80px; /* ajuste selon la vraie hauteur */
 }
+
+
 html {
     scroll-behavior: smooth;
 }
@@ -63,9 +66,11 @@ html {
 .nav-btn:hover {
   color: #E6C200; /* vert bouteille pour contraste */
 }
+body { /*espace entre le header et la page*/
+  padding-top: var(--header-height);
+}
 
 /* FIN HEADER*/
-
 /* --- HERO ACCUEIL --- */
 
 .hero-advanced {
@@ -453,6 +458,8 @@ section p {/* met le texte en justifié*/
         margin: 0 auto;
     }
 }
+
+
 
 /* FOOTER GLOBAL */
 .site-footer {

@@ -97,7 +97,7 @@ header {
   align-items: center;
   padding: 1rem 2rem;
   backdrop-filter: blur(8px);
-  z-index: 100; /* Augmenté pour être sûr d'être au dessus */
+  z-index: 100;
 }
 
 .logo { font-family: 'Lexend', sans-serif; font-size: 1.2rem; }
@@ -135,22 +135,22 @@ nav a { text-decoration: none; color: var(--vert-bouteille); font-weight: 500; }
   /* 4. CORRECTIF : Menu sur une seule ligne et centré */
   .main-nav { 
     display: flex;
-    flex-direction: row;       /* CHANGEMENT CLÉ : Alignement horizontal */
+    flex-direction: row;       /* Alignement horizontal */
     justify-content: center;   /* Centre les boutons sur l'écran */
-    flex-wrap: wrap;           /* Sécurité : permet de passer à la ligne si l'écran est ultra étroit */
+    flex-wrap: wrap;           /* Permet le passage à la ligne si besoin */
     gap: 8px;                  /* Réduit l'espace entre les boutons */
     width: 100%;            
   } 
 
   /* 5. CORRECTIF : Boutons plus étroits */
   .nav-btn {
-    display: inline-block;     /* CHANGEMENT CLÉ : Le bouton prend la largeur du contenu (plus étroit) */
+    display: inline-block;     /* Le bouton prend la largeur du contenu */
     text-align: center;
     background: white;     
-    padding: 8px 12px;         /* CHANGEMENT : Réduit le padding pour un bouton plus compact */
+    padding: 8px 12px;         /* Réduit le padding pour un bouton plus compact */
     border-radius: 8px;
     border: 1px solid #eee;
-    font-size: 14px;           /* Optionnel : Légère réduction de la taille du texte */
+    font-size: 14px;           /* Réduction de la taille du texte */
   }
 }
 
@@ -297,15 +297,20 @@ nav a { text-decoration: none; color: var(--vert-bouteille); font-weight: 500; }
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+/* Conteneur de la section ressources */
 .ressources {
   padding: 3rem 2rem;
   background: var(--beige);
+  min-height: 60vh;
 }
 
+/* Grille spécifique aux ressources (pour centrer sur grands écrans) */
 .pdf-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 
@@ -356,7 +361,7 @@ nav a { text-decoration: none; color: var(--vert-bouteille); font-weight: 500; }
 
 /* Effet hover : grossissement */
 .banner-card:hover {
-  transform: scale(1.1); /* Réduit un peu car 1.3 peut causer des bugs d'overflow */
+  transform: scale(1.1);
   z-index: 10;
 }
 

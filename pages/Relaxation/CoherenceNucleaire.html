@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cohérence Oppenheimer - Onde de Choc 5s</title>
+    <style>
+        :root {
+            --cycle-duration: 10s; /* Cycle total */
+            --atom-count: 80;      /* Plus de particules pour l'effet de masse */
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #020205; /* Noir presque total */
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- ÉLÉMENTS VISUELS --- */
+
+        /* 1. Le Flash d'ignition (bref, à 5s) */
+        .ignition-flash {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: white;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+            animation: flashAnim var(--cycle-duration) linear infinite;
+        }
+
+        /* 2. Le Cœur Central */
+        .core {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00aaff;
+            box-shadow: 0 0 15px #00aaff;
+            position: absolute;
+            z-index: 20;
+            animation: coreCycle var(--cycle-duration) ease-in-out infinite;
+        }
+
+        /* 3. Les Atomes (Particules aspirées) */
+        .atom {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #aaddff;
+            box-shadow: 0 0 8px #aaddff;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        /* 4. L'Onde de Choc (L'anneau qui s'écarte) */
+        .shockwave {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 2px solid white; 
+            background: transparent;
+            /* Une ombre interne pour donner du corps à l'onde */
+            box-shadow: 0 0 50px rgba(255, 200, 100, 0.5), inset 0 0 50px rgba(255, 100, 50, 0.2);
+            z-index: 5;
+            opacity: 0;
+            pointer-events: none;
+            /* Animation modifiée pour durer exactement 5s */
+            animation: shockwaveExpand var(--cycle-duration) linear infinite;
+        }
+
+        /* Texte */
+        .label {
+            position: absolute;
+            bottom: 15%;
+            width: 100%;
+            text-align: center;
+            z-index: 50;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 300;
+            transition: color 0.5s ease;
+        }
+        #instruction { font-size: 2rem; display: block; margin-bottom: 10px; }
+        #timer-bar {
+            width: 200px;
+            height: 2px;
+            background: #333;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #timer-fill {
+            height: 100%;
+            background: white;
+            width: 0%;
+            animation: timerAnim var(--cycle-duration) linear infinite;
+        }
+
+        /* --- ANIMATIONS DÉTAILLÉES --- */
+
+        /* Cycle du cœur : Grossit (pression), Flash, Refroidit */
+        @keyframes coreCycle {
+            0% { transform: scale(1); background: #0088cc; }
+            45% { transform: scale(3); background: #fff; box-shadow: 0 0 50px cyan; } /* Compression max */
+            49% { transform: scale(0.1); background: #fff; } /* Implosion */
+            50% { transform: scale(4); background: #ffffaa; box-shadow: 0 0 200px white; } /* IGNITION */
+            52% { transform: scale(1); background: #ff4400; box-shadow: 0 0 30px #ff4400; } /* Coeur rouge */
+            100% { transform: scale(1); background: #0088cc; box-shadow: 0 0 15px #0088cc; }
+        }
+
+        /* Onde de choc : De 50% (5s) à 100% (10s) = 5 secondes d'expansion */
+        @keyframes shockwaveExpand {
+            0%, 49.9% {
+                width: 0; height: 0;
+                opacity: 0;
+                border-width: 0;
+            }
+            50% {
+                /* Le départ de l'explosion */
+                width: 10px; height: 10px;
+                opacity: 1;
+                border-width: 15px;
+                border-color: white;
+            }
+            100% {
+                /* La fin (l'onde sort de l'écran) */
+                width: 250vmax; height: 250vmax; /* Couvre largement n'importe quel écran */
+                opacity: 0; /* Disparaît doucement à la toute fin */
+                border-width: 0px;
+                border-color: #ff8800; /* Devient orange en s'éloignant */
+            }
+        }
+
+        /* Atomes qui convergent (0% à 50%) */
+        @keyframes convergeAtom {
+            0% { transform: translate(var(--startX), var(--startY)) scale(1); opacity: 0; }
+            5% { opacity: 1; }
+            48% { transform: translate(0, 0) scale(0.5); opacity: 1; background: white;}
+            50% { transform: translate(0, 0) scale(0); opacity: 0; }
+            100% { transform: translate(var(--startX), var(--startY)) scale(0); opacity: 0; }
+        }
+
+        /* Flash écran */
+        @keyframes flashAnim {
+            49% { opacity: 0; }
+            50% { opacity: 0.8; } /* Flash violent */
+            52% { opacity: 0; }
+        }
+
+        /* Barre de progression */
+        @keyframes timerAnim {
+            0% { width: 0%; left: 0; background: #00aaff; }
+            50% { width: 100%; left: 0; background: #fff; } /* Plein à l'inspiration */
+            50.1% { width: 100%; left: auto; right: 0; background: #ff5500; }
+            100% { width: 0%; left: auto; right: 0; background: #ff5500; } /* Vide à l'expiration */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="ignition-flash"></div>
+
+    <div class="container" id="atom-container">
+        <div class="shockwave"></div>
+        
+        <div class="core"></div>
+
+        <div class="label">
+            <span id="instruction">INITIALISATION</span>
+            <div id="timer-bar"><div id="timer-fill"></div></div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('atom-container');
+        const instruction = document.getElementById('instruction');
+        const atomCount = 80;
+
+        // Création des particules (atomes)
+        for (let i = 0; i < atomCount; i++) {
+            let atom = document.createElement('div');
+            atom.classList.add('atom');
+            
+            // Calcul trigonométrique pour placer les atomes en cercle loin de l'écran
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 60 + Math.random() * 40; // Entre 60vw et 100vw du centre
+            const startX = Math.cos(angle) * distance + 'vw';
+            const startY = Math.sin(angle) * distance + 'vh';
+
+            atom.style.setProperty('--startX', startX);
+            atom.style.setProperty('--startY', startY);
+            
+            // Animation standard, décalage aléatoire minime pour fluidité
+            atom.style.animation = `convergeAtom 10s ease-in infinite`;
+            atom.style.animationDelay = `${Math.random() * 0.2}s`;
+
+            container.appendChild(atom);
+        }
+
+        // Gestion du texte synchronisé
+        function updateText() {
+            instruction.innerText = "INSPIREZ";
+            instruction.style.color = "#00aaff";
+            
+            // À 5 secondes pile
+            setTimeout(() => {
+                instruction.innerText = "EXPIREZ";
+                instruction.style.color = "#ff5500";
+            }, 5000);
+        }
+
+        // Lancement
+        setTimeout(() => {
+            updateText();
+            setInterval(updateText, 10000);
+        }, 100);
+
+    </script>
+
+</body>
+</html>

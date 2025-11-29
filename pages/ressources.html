@@ -5,226 +5,220 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ressources — Quentin Denoual Psychologue</title>
 
-  <!-- Police Lexend -->
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Style global -->
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../ressources.css">
 
-  <style>
-    body {
-      font-family: 'Lexend', sans-serif;
-    }
-    
-    /* --- HEADER --- */
-    .resources-header {
-      background: #F4F6F4;
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid #E3E7E5;
-    }
-
-    .resources-header a {
-      font-size: 1rem;
-      text-decoration: none;
-      color: #1F3D36;
-      font-weight: 500;
-    }
-    
-    /* --- TITRE + INTRO --- */
-    .resources-container {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-
-    .resources-container h1 {
-      font-size: 2.3rem;
-      font-weight: 700;
-      color: #1F3D36;
-      margin-bottom: 1.2rem;
-    }
-
-    .resources-intro {
-      font-size: 1.15rem;
-      line-height: 1.75;
-      color: #333;
-      background: #FAFAF7;
-      padding: 1.5rem 1.8rem;
-      border-left: 4px solid #1F3D36;
-      border-radius: 6px;
-      margin-bottom: 2.5rem;
-    }
-
-    /* --- GRILLE DES RESSOURCES --- */
-    #resourcesList {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .resource-item {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid #dce1e9;
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: #f4f6fa;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .resource-item:hover {
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    .resource-thumb {
-      width: 100%;
-      aspect-ratio: 9/16;
-      overflow: hidden;
-    }
-
-    .resource-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-    }
-
-    .resource-content {
-      padding: 1.25rem;
-      max-height: 450px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .resource-content h3 {
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-      color: #12352D;
-    }
-
-    .resource-content p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #333;
-      margin-bottom: 1rem;
-    }
-
-    .resource-content a {
-      padding: 0.6rem 1rem;
-      background: #1F3D36;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-block;
-      transition: background 0.2s ease;
-    }
-
-    .resource-content a:hover {
-      background: #254D45;
-    }
-
-    /* --- Responsive --- */
-    @media (max-width: 768px) {
-      #resourcesList {
-        grid-template-columns: 1fr;
-      }
-      .resources-container h1 {
-        font-size: 1.9rem;
-      }
-      .resources-intro {
-        font-size: 1rem;
-      }
-    }
-  </style>
 </head>
 
-<!-- HEADER SIMPLE -->
 <body>
-<!--HEADER-->
-<header class="site-header">
-  <div class="header-inner">
-    <!-- Nom + sous-titre sur la même ligne -->
-    <div class="brand-text">
-      <h1>
-        Quentin Denoual
-        <span class="sub"><i>Psychologue</i></span>
-      </h1>
-    </div>
 
-    <!-- Navigation avec boutons -->
-    <nav class="main-nav">
-      <a href="../index.html" class="nav-btn">Accueil</a>
-      <!--<a href="pages/terv.html" class="nav-btn">Thérapie</a>-->
-      <a href="ressources.html" class="nav-btn">Ressources</a>
-      <a href="contact.html" class="nav-btn">Me contacter</a>
-    </nav>
-  
-  </div>
-</header>
-</body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-text">
+        <h1>
+          Quentin Denoual
+          <span class="sub"><i>Psychologue</i></span>
+        </h1>
+      </div>
+
+      <nav class="main-nav">
+        <a href="../index.html" class="nav-btn">Accueil</a>
+        <a href="ressources.html" class="nav-btn" style="color: #A7C4A0;">Ressources</a> 
+        <a href="contact.html" class="nav-btn">Me contacter</a>
+      </nav>
+    </div>
+  </header>
 
   <section class="resources-container">
 
-    <h1>Ressources et documents : Les récap'</h1>
+    <h1>Ressources et documents</h1>
 
-    <div class="resources-intro">
-      Vous trouverez ici des documents et des synthèses conçus pour faciliter la compréhension et 
-      l’application des concepts psychologiques vus en consultation.<br><br>
+    <div class="resources-intro-wrapper">
+      
+      <div class="breathing-widget-square">
+        <div class="gargantua-container-square">
+          <div class="bio-disk-light" id="breathingDisk"></div>
+          <div class="timer-display-light" id="timerDisplay">Prêt</div>
+          <div class="instruction-text-light" id="instructionText"></div>
+          
+          <button class="play-btn-center" id="breathBtn" onclick="toggleBreathing()" aria-label="Lancer la cohérence cardiaque">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+        </div>
+        <p class="widget-caption">Cohérence Cardiaque</p>
+      </div>
 
-      Ces ressources ne remplacent en aucun cas nos consultations : il s’agit de récapitulatifs 
-      pratiques, pensés pour compléter nos échanges et vous offrir des repères simples, plutôt que 
-      des cours complets de psychoéducation.
+      <div class="resources-intro-text">
+        <div>
+          <p style="margin-top:0;"><strong>Bienvenue dans l'espace ressources.</strong></p>
+          <p style="margin-bottom:0;">
+            Vous trouverez ici des synthèses conçues pour faciliter la compréhension et 
+            l’application des concepts psychologiques vus en consultation. 
+            Elles ne remplacent pas nos échanges, mais vous offrent des repères pratiques au quotidien.
+          </p>
+        </div>
+      </div>
+
     </div>
 
-    <!-- LISTE DES RESSOURCES -->
     <div id="resourcesList"></div>
 
   </section>
 
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      
+      <div>
+        <h4>Adresse</h4>
+        <p>X Rue XXX</p>
+        <p>38XXX, Grenoble</p>
+      </div>
+
+      <div>
+        <h4>Tarifs</h4>
+        <p>Consultation Adultes (50 min) : 60 €</p>
+        <p>Consultation Étudiants (50 min) : 50 €</p>
+        <br>
+        <h4>Paiement</h4>
+        <p>Carte bancaire ou espèces.</p>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <p>quentindenoual.psy@gmail.com</p>
+        <br>
+        <a href="contact.html" class="cta-button">Prendre rendez-vous</a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      <p>Numéro RPPS : <strong>10009895425</strong> | SIRET : <strong>940 972 052 00028</strong></p>
+      <p>© 2025 Quentin Denoual — Tous droits réservés</p>
+    </div>
+  </footer>
+
+
   <script>
+    // --- 1. GESTION DE LA RESPIRATION ---
+    let breathInterval;
+    let timerInterval;
+
+    function toggleBreathing() {
+      const disk = document.getElementById('breathingDisk');
+      const timerDisplay = document.getElementById('timerDisplay');
+      const instruction = document.getElementById('instructionText');
+      const btn = document.getElementById('breathBtn');
+
+      if (disk.classList.contains('active')) {
+        // --- ARRET ---
+        disk.classList.remove('active');
+        instruction.classList.remove('active');
+        
+        // Reset visuel
+        timerDisplay.innerText = "Prêt";
+        instruction.innerText = "";
+        
+        // Réafficher le bouton
+        btn.style.opacity = "1";
+        btn.style.pointerEvents = "auto";
+        btn.style.transform = "translate(-50%, -50%) scale(1)";
+        
+        // Arrêt des chronomètres
+        clearInterval(breathInterval);
+        clearInterval(timerInterval);
+        
+      } else {
+        // --- DEMARRAGE ---
+        disk.classList.add('active');
+        instruction.classList.add('active');
+        
+        // Cacher le bouton play
+        btn.style.opacity = "0";
+        btn.style.pointerEvents = "none";
+        btn.style.transform = "translate(-50%, -50%) scale(0.5)";
+        
+        // Initialisation
+        instruction.innerText = "INSPIREZ";
+        let count = 1;
+        timerDisplay.innerText = count;
+        let isInhale = true; // true = inspire
+
+        // Boucle du compteur (chaque seconde)
+        timerInterval = setInterval(() => {
+          count++;
+          if (count > 5) count = 1;
+          timerDisplay.innerText = count;
+        }, 1000);
+
+        // Boucle de la respiration (toutes les 5 secondes)
+        breathInterval = setInterval(() => {
+          isInhale = !isInhale;
+          instruction.innerText = isInhale ? "INSPIREZ" : "EXPIREZ";
+          count = 1; // Reset du compteur
+          timerDisplay.innerText = count;
+        }, 5000);
+      }
+    }
+
+    // Permet d'arrêter en cliquant sur le carré vert si l'anim tourne
+    document.querySelector('.breathing-widget-square').addEventListener('click', function(e) {
+        // Si on clique sur le bouton play lui-même, on laisse faire
+        if (e.target.closest('.play-btn-center')) return;
+        
+        // Sinon, si c'est actif, on arrête
+        const disk = document.getElementById('breathingDisk');
+        if (disk.classList.contains('active')) {
+            toggleBreathing();
+        }
+    });
+
+
+    // --- 2. GÉNÉRATION DES CARTES PDF ---
     const pdfResources = [
-    {
-    file: '../assets/pdfs/Psychoeducation/Attaque_de_Panique.pdf',
-    title: 'Attaque de Panique',
-    desc: 'Une fiche simple pour comprendre le cycle de la panique et les outils pour la traverser.',
-    img: '../assets/images/Psychoeducation/Attaque_de_Panique-cover.png',
-  },
-    {
-    file: '../assets/pdfs/Psychoeducation/Ancrage 5-4-3-2-1.pdf',
-    title: 'Ancrage : Technique 5-4-3-2-1',
-    desc: 'Un outil de retour au calme pour réguler l’anxiété et revenir dans l’instant présent.',
-    img: '../assets/images/Psychoeducation/Ancrage-cover.png',
-  },
-     {
-        file: '..assets/pdfs/Psychoeducation/Relaxation de Jacobson.pdf',
-        title: 'Relaxation musculaire progressive de Jacobson',
-        desc: 'Un exercice de détente corporelle pour diminuer la tension interne.',
+      {
+        file: '../assets/pdfs/Psychoeducation/Attaque_de_Panique.pdf',
+        title: 'Attaque de Panique',
+        desc: 'Comprendre le cycle de la panique et les outils pour la traverser.',
+        img: '../assets/images/Psychoeducation/Attaque_de_Panique-cover.png',
+      },
+      {
+        file: '../assets/pdfs/Psychoeducation/Ancrage 5-4-3-2-1.pdf',
+        title: 'Technique d\'Ancrage',
+        desc: 'La méthode 5-4-3-2-1 pour revenir au calme et dans l’instant présent.',
+        img: '../assets/images/Psychoeducation/Ancrage-cover.png',
+      },
+      {
+        file: '../assets/pdfs/Psychoeducation/Relaxation de Jacobson.pdf',
+        title: 'Relaxation de Jacobson',
+        desc: 'Un exercice de détente musculaire progressive pour réduire la tension.',
         img: '../assets/images/Psychoeducation/Jacobson-cover.png',
       },
-    {
+      {
         file: '../assets/pdfs/Psychoeducation/Colère - La Gérer.pdf',
-        title: 'Comprendre la colère',
-        desc: 'Les bases de la régulation émotionnelle appliquées à la colère.',
+        title: 'La Colère',
+        desc: 'Comprendre cette émotion et apprendre les bases de sa régulation.',
         img: '../assets/images/Psychoeducation/Colère-cover.png',
-   },
+      },
       {
         file: '../assets/pdfs/Psychoeducation/Conditionnement.pdf',
-        title: 'Introduction au conditionnement',
-        desc: 'Comprendre l’apprentissage comportemental et ses implications.',
+        title: 'Le Conditionnement',
+        desc: 'Comprendre comment nos comportements s’apprennent et se renforcent.',
         img: '../assets/images/Psychoeducation/Conditionnement-cover.png',
       },
       {
         file: '../assets/pdfs/Psychoeducation/Restructuration Cognitive.pdf',
-        title: 'Restructuration cognitive',
-        desc: 'Identifier et transformer ses pensées automatiques.',
+        title: 'Restructuration Cognitive',
+        desc: 'Identifier et assouplir les pensées automatiques négatives.',
         img: '../assets/images/Psychoeducation/Restructuration cognitive-cover.png',
       },
       {
         file: '../assets/pdfs/Psychoeducation/Hygiène de vie.pdf',
-        title: 'Hygiène de vie pour une meilleure santé mentale',
-        desc: 'Les bases scientifiques du lien entre mode de vie et santé mentale.',
+        title: 'Hygiène de vie',
+        desc: 'L’impact du sommeil, de l’alimentation et du rythme sur la santé mentale.',
         img: '../assets/images/Psychoeducation/Hygiène de vie-cover.png',
       }
     ];
@@ -240,6 +234,7 @@
       const img = document.createElement('img');
       img.src = r.img;
       img.alt = r.title;
+      img.onerror = function() { this.src = 'https://placehold.co/450x800/e6e8e3/1f3d36?text=PDF+Portrait'; };
       thumb.appendChild(img);
 
       const content = document.createElement('div');
@@ -247,7 +242,7 @@
       content.innerHTML = `
         <h3>${r.title}</h3>
         <p>${r.desc}</p>
-        <a href="${r.file}" target="_blank" download>Télécharger le PDF</a>
+        <a href="${r.file}" class="resource-btn" target="_blank" download>Télécharger le PDF</a>
       `;
 
       item.appendChild(thumb);
@@ -255,40 +250,6 @@
       container.appendChild(item);
     });
   </script>
-<footer class="site-footer">
-  <div class="container footer-grid footer-4cols">
-
-    <div>
-      <h4>Adresse</h4>
-      <p>X Rue XXX</p>
-      <p>38XXX, Grenoble</p>
-    </div>
-
-    <div>
-      <h4>Tarifs</h4>
-      <p>Consultation Adultes (50 min) : 60 €</p>
-      <p>Consultation Étudiants (50 min) : 50 €</p>
-
-      <h4>Moyens de Paiement</h4>
-      <p>Carte bancaire ou espèces.</p>
-    </div>
-
-    <div>
-      <h4>Contact</h4>
-      <p> quentindenoual.psy@gmail.com</p>
-
-      <!--<p>Tél : +33 6 22 18 06 50</p>-->
-      <a href="contact.html" class="cta-button">Prendre rendez-vous</a>
-    </div>
-
-  </div>
-
-  <div class="copyright">
-    <h4>Informations légales</h4>
-    <p>Numéro RPPS : <strong>10009895425</strong>, Numéro de SIRET : <strong>940 972 052 00028</strong></p>
-    <i>© 2025 Quentin Denoual — Tous droits réservés</i>
-  </div>
-</footer>
 
 </body>
 </html>

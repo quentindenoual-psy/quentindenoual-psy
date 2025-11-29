@@ -1,0 +1,328 @@
+/* =========================================
+   1. STYLES GÉNÉRAUX PAGE RESSOURCES
+   ========================================= */
+
+body {
+  background-color: #FAFAF7;
+}
+
+.resources-container {
+  max-width: 1100px;
+  margin: 2rem auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.resources-container h1 {
+  font-family: 'Lexend', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1F3D36;
+  margin-bottom: 2rem;
+}
+
+/* =========================================
+   2. NOUVELLE MISE EN PAGE INTRO & WIDGET CARRÉ
+   ========================================= */
+
+.resources-intro-wrapper {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch; /* Hauteur égale pour le texte et le widget */
+  margin-bottom: 3rem;
+}
+
+/* --- LE WIDGET CARRÉ (Réduit à 200px pour s'aligner avec les cartes) --- */
+.breathing-widget-square {
+  flex: 0 0 200px; /* Largeur fixe réduite */
+  height: 200px;   /* Hauteur fixe réduite */
+  background-color: #1F3D36; /* Vert Bouteille */
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-shadow: 0 8px 20px rgba(31, 61, 54, 0.25);
+  position: relative;
+  overflow: hidden;
+  color: white;
+  cursor: pointer;
+}
+
+.gargantua-container-square {
+  position: relative;
+  width: 120px; /* Zone d'animation réduite */
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.8rem; /* Marge suffisante pour le texte "Inspirez" */
+}
+
+/* La Sphère Claire */
+.bio-disk-light {
+  position: absolute;
+  width: 40px; /* Sphère réduite */
+  height: 40px;
+  border-radius: 50%;
+  background-color: #FAFAF7; /* Blanc cassé */
+  opacity: 0.3;
+  transform: scale(1);
+  transition: all 0.5s ease;
+}
+
+.bio-disk-light.active {
+  animation: bioBreatheLight 10s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+/* Compteur (Blanc) */
+.timer-display-light {
+  position: relative;
+  z-index: 10;
+  font-size: 1.8rem; /* Police ajustée à la taille du widget */
+  font-weight: 300;
+  color: #FFFFFF;
+  font-family: 'Lexend', sans-serif;
+  pointer-events: none;
+}
+
+/* Instructions (Inspirez/Expirez) */
+.instruction-text-light {
+  position: absolute;
+  bottom: -25px; /* Positionné pour ne pas toucher le titre */
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #A7C4A0; /* Sauge */
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-family: 'Lexend', sans-serif;
+  pointer-events: none;
+}
+
+.instruction-text-light.active {
+  opacity: 1;
+}
+
+/* Légende en bas du carré */
+.widget-caption {
+  font-size: 0.8rem;
+  color: #A7C4A0;
+  font-family: 'Lexend', sans-serif;
+  text-align: center;
+  opacity: 0.8;
+  margin-top: 0;
+}
+
+/* --- LE BOUTON PLAY (Centré) --- */
+.play-btn-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: all 0.3s;
+  backdrop-filter: blur(4px);
+}
+
+.play-btn-center:hover {
+  background-color: #A7C4A0;
+  border-color: #A7C4A0;
+  color: #1F3D36;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-btn-center svg {
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+  margin-left: 3px; 
+}
+
+/* --- LE TEXTE D'INTRO (À Droite) --- */
+.resources-intro-text {
+  flex: 1;
+  font-family: 'Lexend', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #26332F;
+  background: #FFFFFF;
+  padding: 2rem;
+  border-left: 5px solid #1F3D36;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  display: flex;
+  align-items: center;
+}
+
+/* Animation Claire (Ajustée pour la nouvelle taille) */
+@keyframes bioBreatheLight {
+   0% {
+     transform: scale(1);
+     background-color: #FAFAF7;
+     box-shadow: 0 0 0 0 rgba(250, 250, 247, 0.2);
+   }
+   50% {
+     transform: scale(2.8); /* Grossissement ajusté pour la petite sphère */
+     background-color: #A7C4A0; 
+     box-shadow: 
+        0 0 25px 5px rgba(167, 196, 160, 0.4); 
+   }
+   100% {
+     transform: scale(1);
+     background-color: #FAFAF7;
+     box-shadow: 0 0 0 0 rgba(250, 250, 247, 0.2);
+   }
+}
+
+
+/* =========================================
+   3. CARTES PDF & RESPONSIVE
+   ========================================= */
+
+#resourcesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding-bottom: 1rem;
+  align-items: start;
+}
+
+.resource-item {
+  background: #FFFFFF;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #E6E8E3;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resource-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.resource-thumb {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-bottom: 1px solid #E6E8E3;
+  background: #f4f4f4;
+}
+
+.resource-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.resource-item:hover .resource-thumb img {
+  transform: scale(1.05);
+}
+
+.resource-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.resource-content h3 {
+  font-family: 'Lexend', sans-serif;
+  font-size: 1.25rem;
+  color: #1F3D36;
+  margin: 0 0 0.5rem 0;
+}
+
+.resource-content p {
+  font-family: 'Lexend', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.resource-btn {
+  display: block;
+  text-align: center;
+  background-color: #1F3D36;
+  color: #FFFFFF;
+  padding: 10px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.resource-btn:hover {
+  background-color: #A7C4A0;
+  color: #1F3D36;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 900px) {
+  .resources-intro-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .breathing-widget-square {
+    width: 100%;
+    /* On limite la largeur sur mobile pour que ça reste harmonieux */
+    max-width: 280px; 
+    flex: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .resources-container {
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  .resources-container h1, 
+  .resources-intro-wrapper {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  /* Swipe des cartes */
+  #resourcesList {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 0.5rem 1.5rem 2rem 1.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; 
+  }
+  
+  #resourcesList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .resource-item {
+    flex: 0 0 70%; 
+    max-width: 280px;
+    scroll-snap-align: center; 
+  }
+}

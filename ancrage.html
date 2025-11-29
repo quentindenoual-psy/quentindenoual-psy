@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget d'Ancrage TCC - Par Étapes</title>
+    <style>
+        /* --- DESIGN SYSTEM --- */
+        :root {
+            --primary-color: #6A82FB; /* Un bleu-lavande apaisant */
+            --primary-dark: #5a6fd6;
+            --bg-color: #F3F6FD;
+            --card-bg: #FFFFFF;
+            --text-main: #2D3436;
+            --text-sub: #636E72;
+            --success-color: #00B894; /* Vert menthe */
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* --- CARTE PRINCIPALE --- */
+        .anchor-card {
+            background: var(--card-bg);
+            width: 85%;
+            max-width: 420px;
+            padding: 40px 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(106, 130, 251, 0.1);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        /* Indicateur Visuel (Le grand chiffre) */
+        .step-number {
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            opacity: 0.15;
+            line-height: 1;
+            margin-bottom: 5px;
+            transition: all 0.5s ease;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        .step-instruction {
+            font-size: 1.05rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            min-height: 80px; /* Espace réservé pour éviter les sauts */
+        }
+
+        /* --- BOUTON PROGRESSIF (LONG PRESS) --- */
+        .hold-btn {
+            position: relative;
+            width: 100%;
+            padding: 18px 0;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .hold-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Barre de remplissage */
+        .btn-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary-color);
+            z-index: 0;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .btn-label {
+            position: relative;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* --- ETAT DE SUCCES --- */
+        .finished .step-number {
+            color: var(--success-color);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .finished .hold-btn {
+            border-color: var(--success-color);
+            color: var(--success-color);
+        }
+
+        .finished .btn-progress {
+            background-color: var(--success-color);
+        }
+
+        /* Animation de transition */
+        .fade-enter {
+            animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="anchor-card" id="card">
+    <div class="step-number" id="bigNum">5</div>
+    
+    <div id="content-area">
+        <div class="step-title" id="title">La Vue</div>
+        <div class="step-instruction" id="instruction">
+            Prenez votre temps pour trouver <strong>5 choses</strong> que vous pouvez voir autour de vous.<br><br>
+            <em>Une fois repérées, maintenez le bouton.</em>
+        </div>
+    </div>
+
+    <button class="hold-btn" id="actionBtn">
+        <div class="btn-progress" id="progressBar"></div>
+        <span class="btn-label" id="btnLabel">J'ai terminé cette étape</span>
+    </button>
+</div>
+
+<script>
+    // --- SCÉNARIO TCC (5-4-3-2-1) ---
+    const scenario = [
+        {
+            num: 5,
+            title: "La Vue",
+            text: "Regardez autour de vous (hors de l'écran). Trouvez <strong>5 détails visuels</strong> : une couleur, une ombre, un objet..."
+        },
+        {
+            num: 4,
+            title: "Le Toucher",
+            text: "Trouvez maintenant <strong>4 sensations physiques</strong>. La texture de votre chaise, vos pieds sur le sol, le tissu de vos vêtements..."
+        },
+        {
+            num: 3,
+            title: "L'Ouïe",
+            text: "Tendez l'oreille. Identifiez <strong>3 sons</strong> distincts, proches ou lointains. (Ventilo, circulation, voix...)"
+        },
+        {
+            num: 2,
+            title: "L'Odorat",
+            text: "Identifiez <strong>2 odeurs</strong>. Si vous n'en sentez pas, pensez à 2 odeurs que vous aimez particulièrement (café, pluie, parfum...)."
+        },
+        {
+            num: 1,
+            title: "Le Goût / Émotion",
+            text: "Terminez par <strong>1 chose</strong> que vous pouvez goûter, ou une émotion positive que vous ressentez à propos de vous-même."
+        }
+    ];
+
+    let currentIndex = 0;
+    
+    // Éléments
+    const card = document.getElementById('card');
+    const bigNum = document.getElementById('bigNum');
+    const title = document.getElementById('title');
+    const instruction = document.getElementById('instruction');
+    const btn = document.getElementById('actionBtn');
+    const progressBar = document.getElementById('progressBar');
+    const btnLabel = document.getElementById('btnLabel');
+    const contentArea = document.getElementById('content-area');
+
+    // Configuration Long Press
+    let pressTimer;
+    const holdTime = 2000; // 2 secondes pour valider un bloc entier
+
+    // --- MISE A JOUR UI ---
+    function updateSlide() {
+        // Animation "Fade In" pour le texte
+        contentArea.classList.remove('fade-enter');
+        void contentArea.offsetWidth; // Trigger reflow
+        contentArea.classList.add('fade-enter');
+
+        if (currentIndex < scenario.length) {
+            const step = scenario[currentIndex];
+            bigNum.textContent = step.num;
+            title.textContent = step.title;
+            instruction.innerHTML = step.text;
+            btnLabel.textContent = "J'ai trouvé les " + step.num + " éléments";
+        } else {
+            showEndScreen();
+        }
+    }
+
+    function showEndScreen() {
+        card.classList.add('finished');
+        bigNum.textContent = "✔";
+        title.textContent = "Exercice terminé";
+        instruction.innerHTML = "Vous êtes ancré dans le présent.<br>Prenez une dernière grande inspiration.";
+        btnLabel.textContent = "Fermer / Recommencer";
+        
+        // Reset action
+        btn.onclick = () => location.reload();
+        removeListeners(); // Désactive le long press pour la fin
+    }
+
+    // --- LOGIQUE LONG PRESS ---
+    function startPress(e) {
+        if(e.type === 'mousedown' && e.button !== 0) return;
+        e.preventDefault();
+
+        // Lancer l'animation CSS
+        progressBar.style.transition = `width ${holdTime}ms linear`;
+        progressBar.style.width = "100%";
+        progressBar.style.opacity = "0.3";
+
+        // Lancer le timer JS
+        pressTimer = setTimeout(() => {
+            nextStep();
+        }, holdTime);
+    }
+
+    function cancelPress() {
+        clearTimeout(pressTimer);
+        // Annuler animation
+        progressBar.style.transition = "width 0.3s ease-out";
+        progressBar.style.width = "0%";
+    }
+
+    function nextStep() {
+        // Succès tactile
+        if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
+        
+        // Reset visuel immédiat
+        progressBar.style.transition = "none";
+        progressBar.style.width = "0%";
+        
+        currentIndex++;
+        updateSlide();
+    }
+
+    // --- LISTENERS ---
+    function addListeners() {
+        btn.addEventListener('mousedown', startPress);
+        btn.addEventListener('mouseup', cancelPress);
+        btn.addEventListener('mouseleave', cancelPress);
+        
+        btn.addEventListener('touchstart', startPress);
+        btn.addEventListener('touchend', cancelPress);
+    }
+    
+    function removeListeners() {
+        btn.removeEventListener('mousedown', startPress);
+        btn.removeEventListener('mouseup', cancelPress);
+        btn.removeEventListener('mouseleave', cancelPress);
+        btn.removeEventListener('touchstart', startPress);
+        btn.removeEventListener('touchend', cancelPress);
+    }
+
+    // Init
+    addListeners();
+    updateSlide();
+
+</script>
+
+</body>
+</html>

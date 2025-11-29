@@ -1,4 +1,14 @@
 /* =========================================
+   0. CORRECTIF MENU (HEADER)
+   ========================================= */
+/* Force le menu à passer au-dessus du widget et des chiffres */
+.site-header {
+  z-index: 10000 !important; 
+  position: fixed; /* Sécurité pour s'assurer qu'il reste fixe */
+  width: 100%;
+}
+
+/* =========================================
    1. STYLES GÉNÉRAUX PAGE RESSOURCES
    ========================================= */
 
@@ -31,7 +41,7 @@ body {
   margin-bottom: 3rem;
 }
 
-/* --- LE WIDGET CARRÉ (Réduit à 200px pour s'aligner avec les cartes) --- */
+/* --- LE WIDGET CARRÉ (Réduit à 200px) --- */
 .breathing-widget-square {
   flex: 0 0 200px; /* Largeur fixe réduite */
   height: 200px;   /* Hauteur fixe réduite */
@@ -47,6 +57,8 @@ body {
   overflow: hidden;
   color: white;
   cursor: pointer;
+  /* Z-index bas pour ne pas passer sur le menu, mais on a forcé le menu à 10000 */
+  z-index: 1; 
 }
 
 .gargantua-container-square {
@@ -56,7 +68,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.8rem; /* Marge suffisante pour le texte "Inspirez" */
+  margin-bottom: 1.8rem; /* Marge pour le texte "Inspirez" */
 }
 
 /* La Sphère Claire */
@@ -80,7 +92,7 @@ body {
 .timer-display-light {
   position: relative;
   z-index: 10;
-  font-size: 1.8rem; /* Police ajustée à la taille du widget */
+  font-size: 1.8rem; /* Police ajustée */
   font-weight: 300;
   color: #FFFFFF;
   font-family: 'Lexend', sans-serif;
@@ -168,7 +180,7 @@ body {
   align-items: center;
 }
 
-/* Animation Claire (Ajustée pour la nouvelle taille) */
+/* Animation Claire */
 @keyframes bioBreatheLight {
    0% {
      transform: scale(1);
@@ -176,7 +188,7 @@ body {
      box-shadow: 0 0 0 0 rgba(250, 250, 247, 0.2);
    }
    50% {
-     transform: scale(2.8); /* Grossissement ajusté pour la petite sphère */
+     transform: scale(2.8);
      background-color: #A7C4A0; 
      box-shadow: 
         0 0 25px 5px rgba(167, 196, 160, 0.4); 
@@ -286,7 +298,6 @@ body {
   
   .breathing-widget-square {
     width: 100%;
-    /* On limite la largeur sur mobile pour que ça reste harmonieux */
     max-width: 280px; 
     flex: auto;
   }
